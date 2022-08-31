@@ -42,6 +42,10 @@ export class CurrencyService {
         return createdCurrency.save();
     }
 
+    async insertMany(currencyList: Currency[]): Promise<Currency[]> {
+        return await this.currencyModel.insertMany(currencyList);
+    }
+
     async update(id: string, updateCurrencyDto: UpdateCurrencyDto): Promise<Currency> {
         const currency = await this.currencyModel.findByIdAndUpdate(id, updateCurrencyDto, { new: true });
 
