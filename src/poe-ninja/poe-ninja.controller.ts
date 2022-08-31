@@ -11,4 +11,11 @@ export class PoeNinjaController {
     ) {
         return this.poeNinjaService.importCurrencyFromPoeNinja(league);
     }
+
+    @Get('/updateCurrency/:league')
+    async updateCurrencyFromPoeNinja(
+        @Param('league') league: string
+    ) {
+        return this.poeNinjaService.updateCurrencyFromPoeNinja(league);
+    }
 }

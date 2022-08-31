@@ -56,6 +56,16 @@ export class CurrencyService {
         return currency;
     }
 
+    async updateMany(currencyList: Currency[]): Promise<Currency[]> {
+        let updatedCurrencies: Currency[] = [];
+
+        for (let currency of currencyList) {
+            updatedCurrencies.push(await this.currencyModel.findOneAndUpdate({ name: currency.name }, currency));
+        }
+
+        return updatedCurrencies;
+    }
+
     async delete(id: string): Promise<void> {
         return this.currencyModel.findByIdAndDelete(id);
     }

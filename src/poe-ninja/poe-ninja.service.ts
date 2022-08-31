@@ -14,10 +14,18 @@ export class PoeNinjaService {
     ) { }
 
     async importCurrencyFromPoeNinja(league: string): Promise<Currency[]> {
+        return this.currencyService.insertMany(await this.getCurrencyFromPoeNinja(league));
+    }
+
+    async updateCurrencyFromPoeNinja(league: string): Promise<Currency[]> {
+        return this.currencyService.updateMany(await this.getCurrencyFromPoeNinja(league));
+    }
+
+    private async getCurrencyFromPoeNinja(league: string): Promise<Currency[]> {
         const currencyInformation = await this.requestCurrencyInformationFromPoeNinja(league);
         const currencyList = this.parseCurrencyInformation(currencyInformation.data.lines);
 
-        return this.currencyService.insertMany(currencyList);
+        return currencyList;
     }
 
     private async requestCurrencyInformationFromPoeNinja(league: string) {
