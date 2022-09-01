@@ -1,4 +1,4 @@
-import { IsString } from 'class-validator';
+import { IsBoolean, IsString, IsNumber } from 'class-validator';
 
 export class CreateAppSettingsDto {
     @IsString()
@@ -6,4 +6,13 @@ export class CreateAppSettingsDto {
 
     @IsString()
     poeNinjaCurrencyLink: string;
+
+    @IsString()
+    poeSaleLink: string;
+
+    @IsBoolean()
+    importingBlessingFlipPrices: boolean;
+
+    @IsNumber()
+    skipsForPrice: number;
 }

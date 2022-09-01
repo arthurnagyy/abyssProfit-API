@@ -12,6 +12,7 @@ import { BlessingFlipDefaultData } from './blessing-flip.default-data';
         MongooseModule.forFeature([{ name: BlessingFlip.name, schema: BlessingFlipSchema }]),
     ],
     controllers: [BlessingFlipController],
-    providers: [BlessingFlipService, BlessingFlipDefaultData]
+    providers: [BlessingFlipService, BlessingFlipDefaultData],
+    exports: [BlessingFlipService],
 })
 export class BlessingFlipModule { }

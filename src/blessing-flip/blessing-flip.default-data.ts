@@ -14,16 +14,16 @@ export class BlessingFlipDefaultData {
 
     private xophData = [
         {
-            itemName: "xoph's inception",
-            resultedItemName: "xoph's nurture"
+            itemName: "Xoph's Inception",
+            resultedItemName: "Xoph's Nurture"
         },
         {
-            itemName: "the formless flame",
-            resultedItemName: "the formless inferno"
+            itemName: "The Formless Flame",
+            resultedItemName: "The Formless Inferno"
         },
         {
-            itemName: "xoph's heart",
-            resultedItemName: "xoph's blood"
+            itemName: "Xoph's Heart",
+            resultedItemName: "Xoph's Blood"
         }
     ];
 
@@ -112,9 +112,9 @@ export class BlessingFlipDefaultData {
         for (const itemCombination of itemCombinations) {
             let blessingFlip: BlessingFlip = {
                 blessing: blessing.name,
-                itemName: itemCombination.itemName.toLowerCase(),
+                itemName: itemCombination.itemName,
                 itemPrice: 0,
-                resultedItemName: itemCombination.resultedItemName.toLowerCase(),
+                resultedItemName: itemCombination.resultedItemName,
                 resultedItemPrice: 0
             }
 

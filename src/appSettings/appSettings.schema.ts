@@ -10,6 +10,15 @@ export class AppSettings {
 
     @Prop()
     poeNinjaCurrencyLink: string;
+
+    @Prop()
+    poeSaleLink: string;
+
+    @Prop()
+    importingBlessingFlipPrices: boolean;
+
+    @Prop()
+    skipsForPrice: number;
 }
 
 export const AppSettingsSchema = SchemaFactory.createForClass(AppSettings);

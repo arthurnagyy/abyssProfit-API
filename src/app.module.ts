@@ -5,6 +5,7 @@ import { CurrencyModule } from './currency/currency.module';
 import { AppSettingsModule } from './appSettings/appSettings.module';
 import { PoeNinjaModule } from './poe-ninja/poe-ninja.module';
 import { BlessingFlipModule } from './blessing-flip/blessing-flip.module';
+import { PriceUpdaterModule } from './price-updater/price-updater.module';
 
 @Module({
   imports: [
@@ -13,7 +14,8 @@ import { BlessingFlipModule } from './blessing-flip/blessing-flip.module';
     CurrencyModule,
     AppSettingsModule,
     PoeNinjaModule,
-    BlessingFlipModule
+    BlessingFlipModule,
+    PriceUpdaterModule
   ],
 })
 export class AppModule {}
