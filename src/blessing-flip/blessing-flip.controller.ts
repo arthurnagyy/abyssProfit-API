@@ -1,13 +1,17 @@
 import { Body, Controller, Delete, Get, Param, Post } from '@nestjs/common';
 import { ValidateMongoId } from '../validateMongoId.pipe';
 import { ValidationPipe } from '../validation.pipe';
-import { BlessingFlipService } from './blessing-flip.service';
 import { BlessingFlip } from './blessing-flip.schema';
+import { BlessingFlipService } from './blessing-flip.service';
+import { BlessingFlipDefaultData } from './blessing-flip.default-data';
 import { CreateBlessingFlipDto } from './dto/create-blessing-flip.dto';
 
 @Controller('blessing-flip')
 export class BlessingFlipController {
-    constructor(private readonly blessingFlipService: BlessingFlipService) { }
+    constructor(
+        private readonly blessingFlipService: BlessingFlipService,
+        private readonly blessingFlipDefaultData: BlessingFlipDefaultData
+    ) { }
 
     @Get()
     async getAllBlessingFlips(): Promise<BlessingFlip[]> {
@@ -33,5 +37,10 @@ export class BlessingFlipController {
         @Param('id', ValidateMongoId) id: string
     ): Promise<void> {
         return this.blessingFlipService.delete(id);
+    }
+
+    @Get('/import/default')
+    async importDefaultData() {
+        return await this.blessingFlipDefaultData.generateData();
     }
 }

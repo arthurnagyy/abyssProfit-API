@@ -27,10 +27,14 @@ export class BlessingFlipService {
     async create(blessingFlipDto: CreateBlessingFlipDto): Promise<BlessingFlip> {
         const createdBlessingFlip = new this.blessingFlipModel(blessingFlipDto);
 
-        return createdBlessingFlip;
+        return createdBlessingFlip.save();
     }
 
     async delete(id: string): Promise<void> {
         return this.blessingFlipModel.findByIdAndDelete(id);
+    }
+
+    async insertMany(blessingFlipList: BlessingFlip[]): Promise<BlessingFlip[]> {
+        return await this.blessingFlipModel.insertMany(blessingFlipList);
     }
 }
