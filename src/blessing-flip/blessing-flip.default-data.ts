@@ -109,7 +109,6 @@ export class BlessingFlipDefaultData {
         const blessing = await this.currencyService.findOneByName(`blessing of ${blessingName}`);
         const itemCombinations = blessingName == "uul-netol" ? this.uulNetolData : this[blessingName + "Data"];
 
-        let blessingFlipList: BlessingFlip[] = [];
         for (const itemCombination of itemCombinations) {
             let blessingFlip: BlessingFlip = {
                 blessing: blessing.name,
