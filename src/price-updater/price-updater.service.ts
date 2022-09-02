@@ -100,8 +100,13 @@ export class PriceUpdaterService {
         }
 
         let listingIds = response.result;
-        listingIds.splice(0, appSettings.skipsForPrice);
-        listingIds = listingIds.splice(0, 10);
+
+        if(response.total >= 15) {
+            listingIds.splice(0, appSettings.skipsForPrice);
+            listingIds = listingIds.splice(0, 10);
+        } else if (response.total >= 10 && response.total <= 15) {
+            listingIds.splice(0, 5);
+        }
 
         return [listingIds, response.id];
     }
@@ -139,7 +144,7 @@ export class PriceUpdaterService {
     }
 
     private async convertCurrencyToChaos(currencyName: string, currencyAmount: number): Promise<number> {
-        const currency = await this.currencyService.findOneByName(currencyName.toLowerCase());
+        const currency = await this.currencyService.findOneByNameLike(currencyName.toLowerCase());
 
         return currencyAmount * currency.chaos;
     }

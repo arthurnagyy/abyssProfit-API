@@ -35,6 +35,16 @@ export class CurrencyService {
         return currency;
     }
 
+    async findOneByNameLike(name: string): Promise<Currency> {
+        const currency = await this.currencyModel.findOne({ name: { $regex: '.*' + name + '.*' } });
+
+        if(!currency) {
+            throw new NotFoundException(`Currency like "${name}" not found`);
+        }
+
+        return currency;
+    }
+
     async create(createCurrencyDto: CreateCurrencyDto): Promise<Currency> {
         const createdCurrency = new this.currencyModel(createCurrencyDto);
 

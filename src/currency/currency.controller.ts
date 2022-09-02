@@ -27,6 +27,11 @@ export class CurrencyController {
 		return await this.currencyService.findOneByName(name);
 	}
 
+	@Get('/name/like/:name')
+	async getCurrencyByNameLike(@Param('name') name: string): Promise<Currency> {
+		return await this.currencyService.findOneByNameLike(name);
+	}
+
 	@Post('/create')
 	async createCurrency(@Body(new ValidationPipe()) createCurrencyDto: CreateCurrencyDto): Promise<Currency> {
 		return await this.currencyService.create(createCurrencyDto);
